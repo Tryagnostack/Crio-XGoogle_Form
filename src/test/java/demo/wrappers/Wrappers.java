@@ -24,6 +24,7 @@ public class Wrappers {
         element.click();
         element.sendKeys(text);
     }
+
     public static void sendKeyWrap(WebDriver driver, WebElement element, String text, String flag){
         scrollTo(driver, element, flag);
         element.click();
@@ -57,4 +58,5 @@ public class Wrappers {
     public static void scrollTo(WebDriver driver, WebElement element,String flag){
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView("+flag+")",element);
     }
+
 }

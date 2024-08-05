@@ -9,17 +9,16 @@ import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.logging.Level;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-// import io.github.bonigarcia.wdm.WebDriverManager;
 import demo.wrappers.Wrappers;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestCases {
     ChromeDriver driver;
@@ -29,9 +28,6 @@ public class TestCases {
 
     @FindBy(tagName = "textarea")
     WebElement reasonField;
-
-    // @FindBy(xpath = "//div[@class='Qr7Oae'][3]")
-    // WebElement divExperience;
 
     @FindBy(xpath = "//*[@data-value='3 - 5']")
     WebElement experienceValue;
@@ -60,37 +56,41 @@ public class TestCases {
     /*
      * Do not change the provided methods unless necessary, they will help in automation and assessment
      */
-
-     /* hahahahah */
     @Test
     public void testCase01() throws InterruptedException{
         driver.get("https://docs.google.com/forms/d/e/1FAIpQLSep9LTMntH5YqIXa5nkiPKSs283kdwitBBhXWyZdAS-e4CxBQ/viewform");
         Wrappers.sendKeyWrap(driver,nameField,"Crio Learner");
         String reason = "I want to be the best QA Engineer! " + System.currentTimeMillis();
+        System.out.println(reason);
         Wrappers.sendKeyWrap(driver, reasonField, reason);
 
+        
         // Wrappers.scrollTo(driver, divExperience);
         Wrappers.click(driver, experienceValue);
+        /*
+         * TODO: Fuck off
+         * With the shit requirements
+         */
 
         Wrappers.checkClick(driver, "Java");
         Wrappers.checkClick(driver, "Selenium");
         Wrappers.checkClick(driver, "TestNG");
+
+        /*
+         * We add some nice pretty comments
+         */
+
+        //
+        //Some more comments
         
         Wrappers.GenderWrapper(driver, "Ms");
         
         LocalDate date = LocalDate.now().minusDays(7);
-        DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("ddMMYYYY");
-        // Wrappers.sendKeyWrap(driver, dateField, date.format(dateformat));
+        DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("ddMMYYYY"); // One comment here
+        System.out.println(date.format(dateformat));
         Wrappers.scrollTo(driver, dateField, "true");
         dateField.sendKeys(date.format(dateformat));
-        // Wrappers.sendKeyWrap(driver, dateField, date.format(dateformat), "false");
-
-        // LocalDateTime ldt = LocalDateTime.now();
-        // DateTimeFormatter hourFormat = DateTimeFormatter.ofPattern("HH");
-        // DateTimeFormatter minuteformat = DateTimeFormatter.ofPattern("mm");
         
-        // Wrappers.sendKeyWrap(driver, HourField, ldt.format(hourFormat));
-        // Wrappers.sendKeyWrap(driver, MinuteField, ldt.format(minuteformat));
         Wrappers.sendKeyWrap(driver, HourField, "07");
         Wrappers.sendKeyWrap(driver, MinuteField, "30");
 
@@ -107,6 +107,7 @@ public class TestCases {
 
         // NOT NEEDED FOR SELENIUM MANAGER
         // WebDriverManager.chromedriver().timeout(30).setup();
+        // COMMENT ALAIZ VOU?
 
         ChromeOptions options = new ChromeOptions();
         LoggingPreferences logs = new LoggingPreferences();
